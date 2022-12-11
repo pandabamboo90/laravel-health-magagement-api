@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->text('thumbnail_img_url');
-            $table->integer('meal_type');
+            $table->string('meal_type');
             $table->timestamps();
         });
     }

@@ -9,6 +9,13 @@ class Meal extends Model
 {
     use HasFactory;
 
+    const MEAL_TYPE = [
+        'morning',
+        'lunch',
+        'dinner',
+        'snack',
+    ];
+
     /**
      * Relationships
      */

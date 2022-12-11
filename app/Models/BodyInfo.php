@@ -9,6 +9,8 @@ class BodyInfo extends Model
 {
     use HasFactory;
 
+    protected $table = 'body_info';
+
     /**
      * Relationships
      */

@@ -9,6 +9,10 @@ class ExerciseHistory extends Model
 {
     use HasFactory;
 
+    protected $table = 'exercises_histories';
+
+    const STATUS = ['not_started', 'in_progress', 'finished'];
+
     /**
      * Relationships
      */

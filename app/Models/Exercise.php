@@ -9,6 +9,8 @@ class Exercise extends Model
 {
     use HasFactory;
 
+    const LEVEL = ['beginner', 'advance', 'master'];
+
     /**
      * Relationships
      */

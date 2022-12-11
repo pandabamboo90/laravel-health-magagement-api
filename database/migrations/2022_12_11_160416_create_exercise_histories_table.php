@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('exercises_histories', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
             $table->foreignId('exercise_id')->constrained();
-            $table->integer('status')->default(0);
+            $table->string('status');
             $table->timestamps();
-            $table->unique(['user_id', 'exercise_id']);
         });
     }
 
