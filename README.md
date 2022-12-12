@@ -59,8 +59,11 @@ The provided Postman collection included following APIs, group by folders
 
 As for API requests / params, they are quite self-explanatory, please refer
 
-#### Example request:
+#### Example request params & headers:
 ![api_doc_example_request.png](docs%2Fimg%2Fapi_doc_example_request.png)
+
+![api_doc_example_request_headers.png](docs%2Fimg%2Fapi_doc_example_request_headers.png)
+Please noticed that `Authorization` header key/value must present for making API requests to authenticated routes, otherwise we won't need it for public routes
 
 #### Example response:
 ![api_doc_example_response.png](docs%2Fimg%2Fapi_doc_example_response.png)
