@@ -14,9 +14,12 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::with(['tags' => function ($q) {
-            $q->select('id', 'name');
-        }])->orderBy('id', 'DESC')->paginate($this->perPageParam($request));
+        $posts = Post::with([
+            'tags' => function ($q) {
+                $q->select('id', 'name');
+            }])
+            ->orderBy('id', 'DESC')
+            ->paginate($this->perPageParam($request));
 
         return response()->json($posts);
     }

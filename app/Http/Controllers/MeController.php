@@ -47,7 +47,9 @@ class MeController extends Controller
     public function bodyInfoHistories(Request $request)
     {
         $user = $request->user();
-        $bodyInfo = $user->bodyInfo()->paginate($this->perPageParam($request));;
+        $bodyInfo = $user->bodyInfo()
+            ->orderBy('created_at', 'DESC')
+            ->paginate($this->perPageParam($request));
 
         return response()->json($bodyInfo);
     }
@@ -60,7 +62,9 @@ class MeController extends Controller
     public function meals(Request $request)
     {
         $user = $request->user();
-        $meals = $user->meals()->paginate($this->perPageParam($request));
+        $meals = $user->meals()
+            ->orderBy('created_at', 'DESC')
+            ->paginate($this->perPageParam($request));
 
         return response()->json($meals);
     }
@@ -75,6 +79,7 @@ class MeController extends Controller
         $user = $request->user();
         $exerciseHistories = ExerciseHistory::with('exercise')
             ->where('user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
             ->paginate($this->perPageParam($request));
 
         return response()->json($exerciseHistories);
@@ -88,7 +93,9 @@ class MeController extends Controller
     public function diaries(Request $request)
     {
         $user = $request->user();
-        $diaries = $user->diaries()->paginate($this->perPageParam($request));
+        $diaries = $user->diaries()
+            ->orderBy('created_at', 'DESC')
+            ->paginate($this->perPageParam($request));
 
         return response()->json($diaries);
     }
