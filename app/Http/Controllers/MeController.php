@@ -46,8 +46,6 @@ class MeController extends Controller
      */
     public function bodyInfoHistories(Request $request)
     {
-        $perPage = $request->has('per_page') ? $request->input('per_page') : 10;
-
         $user = $request->user();
         $bodyInfo = $user->bodyInfo()->paginate($this->perPageParam($request));;
 
@@ -61,8 +59,6 @@ class MeController extends Controller
      */
     public function meals(Request $request)
     {
-        $perPage = $request->has('per_page') ? $request->input('per_page') : 10;
-
         $user = $request->user();
         $meals = $user->meals()->paginate($this->perPageParam($request));
 
@@ -95,15 +91,5 @@ class MeController extends Controller
         $diaries = $user->diaries()->paginate($this->perPageParam($request));
 
         return response()->json($diaries);
-    }
-
-    /**
-     * Return the value of per_page param if it's existed, otherwise use the default value is 10
-     *
-     * @return numeric
-     */
-    private function perPageParam(Request $request)
-    {
-        return $request->has('per_page') ? $request->input('per_page') : 10;
     }
 }

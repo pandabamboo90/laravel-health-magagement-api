@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/user/login', [AuthController::class, 'login']);
 
+// Authenticated API
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/user/logout', [AuthController::class, 'logout']);
 
@@ -27,4 +29,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('me/meals', 'meals');
         Route::get('me/diaries', 'diaries');
     });
+});
+
+// Public APIs
+Route::controller(PostController::class)->group(function () {
+    Route::get('/public/posts', 'index');
+    Route::get('/public/posts/{id}', 'show');
 });
