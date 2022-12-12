@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Login with email + password and issue access token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -28,17 +32,22 @@ class AuthController extends Controller
 
         $token = $user->createToken($user->id);
 
-        return [
+        return response()->json([
             'data' => [
                 'token' => $token->plainTextToken
             ]
-        ];
+        ]);
     }
 
+    /**
+     * Logout user and destroy the token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
 
-        return ['message' => 'Token deleted'];
+        return response()->json(['message' => 'Token destroyed successfully']);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\ExerciseHistory;
 use App\Models\Meal;
 use App\Models\Post;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,11 +22,14 @@ class DatabaseSeeder extends Seeder
         $user = \App\Models\User::factory()->create();
 
         // Body info
-        $user->bodyInfo()->create([
-            'height' => 180,
-            'weight' => 70,
-            'fat_percent' => 15,
-        ]);
+        for ($i = 14; $i > 0; $i--) {
+            $user->bodyInfo()->create([
+                'height' => 180,
+                'weight' => fake()->numberBetween(75, 65),
+                'fat_percent' => fake()->numberBetween(13, 15),
+                'created_at' => Carbon::today()->subDay($i)
+            ]);
+        }
 
         // Diaries
         for ($i = 0; $i < 30; $i++) {

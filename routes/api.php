@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\MeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('/user/login', [AuthController::class, 'login']);
-Route::delete('/user/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::delete('/user/logout', [AuthController::class, 'logout']);
+
+    Route::controller(MeController::class)->group(function () {
+        Route::get('me/profile', 'profile');
+        Route::get('me/body_info_histories', 'bodyInfoHistories');
+        Route::get('me/exercise_histories', 'exerciseHistories');
+        Route::get('me/meals', 'meals');
+        Route::get('me/diaries', 'diaries');
+    });
+});

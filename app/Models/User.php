@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function bodyInfo()
     {
-        return $this->hasOne(BodyInfo::class);
+        return $this->hasMany(BodyInfo::class);
     }
 
     public function achievements()
