@@ -24,7 +24,13 @@ This project was built by using Laravel + Sail (a light-weight command-line inte
     ```
     ./vendor/bin/sail up
     ```
-    When the services are up, you should navigate to http://localhost and see a Laravel welcome page   
+    When the services are up, you should navigate to http://localhost and see a Laravel welcome page
+    ![laravel_welcome_page.png](docs%2Fimg%2Flaravel_welcome_page.png)
+
+   (Optional) To stop the containers 
+    ```
+    ./vendor/bin/sail down
+    ```
 
 2. Migrate database
     ```
