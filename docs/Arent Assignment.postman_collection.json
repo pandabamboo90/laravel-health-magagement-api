@@ -35,14 +35,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/api/user/logout",
-							"protocol": "http",
+							"raw": "{{API_URL}}/auth/logout",
 							"host": [
-								"localhost"
+								"{{API_URL}}"
 							],
 							"path": [
-								"api",
-								"user",
+								"auth",
 								"logout"
 							]
 						}
@@ -90,14 +88,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/api/user/login",
-							"protocol": "http",
+							"raw": "{{API_URL}}/auth/login",
 							"host": [
-								"localhost"
+								"{{API_URL}}"
 							],
 							"path": [
-								"api",
-								"user",
+								"auth",
 								"login"
 							]
 						}

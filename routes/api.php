@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/user/login', [AuthController::class, 'login']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 
 // Authenticated API
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::delete('/user/logout', [AuthController::class, 'logout']);
+    Route::delete('/auth/logout', [AuthController::class, 'logout']);
 
     Route::controller(MeController::class)->group(function () {
         Route::get('me/profile', 'profile');
